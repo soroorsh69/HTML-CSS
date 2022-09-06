@@ -36,14 +36,10 @@ echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
 <section class="content">
     <div class="container"></div>
     <article>
-        <p>I've been working at Millionairium as an SEO
-            expert and leadership team.
-            Self-motivated with strong interpersonal skills,
-            willing to go above and beyond. My passion is to
-            achieve the best rank for websites, also I love
-            searching, reading, programming, and analyzing.
-            I am a hands-on leader who is able to execute
-            given tasks</p>
+        <?php
+        $myfile=fopen("resume.rtf", "r")
+        ?>
+        
     </article>
 <nav class="sidebar">
     <h2 class="text-center mt-3 mb-3">My Experience</h2>
