@@ -15,13 +15,14 @@
      <nav class="navbar justify-content-center">
          <div class="container-fluid">
          <ul class="nav navbar">
-            $menu=array("Home", "about-us", "Services", "Blog", "FAQ", "Contact us");
+            <?php
+            $menu=['Home', 'About-us', 'Blog', 'service', 'FAQ', 'Contact us'];
             foreach($menu as $value){
-echo " <li class="nav-item"><a class="nav-link" href="#">$value</a></li>";
+echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
             }
+         ?>   
             
-            
-         </ul>
+</ul>
          </div>
      </nav>
 
