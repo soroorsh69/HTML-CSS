@@ -16,7 +16,7 @@
          <div class="container-fluid">
          <ul class="nav navbar">
             <?php
-            $menu=['Home', 'About-us', 'Blog', 'service', 'FAQ', 'Contact us'];
+            $menu=['Home', 'About-us', 'Blog', 'service', 'FAQ', 'Contact us', 'Ehsan'];
             foreach($menu as $value){
 echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
             }
@@ -37,13 +37,49 @@ echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
     <div class="container"></div>
     <article>
         <?php
-        $myfile=fopen("resume.rtf", "r")
+        $content=file_get_contents("resume.txt");
+        echo $content;
+
+        $db_host = '127.0.0.1';
+        $db_user = 'root';
+  $db_password = 'root';
+  $db_db = 'Soroor-db';
+  $db_port = 8889;
+
+  $mysqli = new mysqli(
+    $db_host,
+    $db_user,
+    $db_password,
+    $db_db,
+	$db_port
+  );
+	
+  if ($mysqli->connect_error) {
+    echo 'Errno: '.$mysqli->connect_errno;
+    echo '<br>';
+    echo 'Error: '.$mysqli->connect_error;
+    exit();
+  }
+
+  echo 'Success: A proper connection to MySQL was made.';
+  echo '<br>';
+  echo 'Host information: '.$mysqli->host_info;
+  echo '<br>';
+  echo 'Protocol version: '.$mysqli->protocol_version;
+
+  $mysqli->close();
+        
+        
         ?>
         
     </article>
 <nav class="sidebar">
     <h2 class="text-center mt-3 mb-3">My Experience</h2>
+
     <ul >
+        <?php
+        $sidebar=['Google Search Console']
+        ?>
         <li > Google Search Console</li>
         <li > Google Analytics</li>
         <li > Semrush</li>
