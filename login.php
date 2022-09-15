@@ -1,21 +1,40 @@
 <?php
-  $db_host = '127.0.0.1';
-  $db_user = 'root';
-  $db_password = 'root';
-  $db_db = 'information_schema';
-  $db_port = 8889;
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbName = "Soroor_db";
 
-  $mysqli = new mysqli(
-    $db_host,
-    $db_user,
-    $db_password,
-    $db_db,
-	$db_port
-  );
+// Create connection
+$conn = new mysqli($servername, $username, $password);
 
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+if(isset($_POST['username']) && isset($_POST['password']) ){
 
+    $uname=$_POST['username'];
+    $password=$_POST['password'];
 
-  ?>
+   $sql="SELECT * FROM login_tb where uname='".$uname."' AND pass='".$password."'"; 
+
+   $result = $mysqli->query($sql);
+
+   if ($result->num_rows > 0) {
+    // output data of each row
+    
+      echo 'You have successfully logged in';
+      exit();
+   
+  } else {
+    echo 'You Have Entered Incorrect Password';
+  }
+}
+else{
+
+}
+?>
 
 
 
@@ -32,11 +51,11 @@
     
 <h2>Login Form</h2>
 
-<form action="login.php" method="post">
+<form action="login.php" method="POST">
   <label for="uname">Username:</label><br>
-  <input type="text" id="username" name="username" ><br>
+  <input type="text" id="username" name="uname" ><br>
   <label for="password">Password</label><br>
-  <input type="password" id="password" name="password" ><br><br>
+  <input type="password" id="password" name="pass" ><br><br>
   <input type="submit" value="Submit">
 </form>  
 

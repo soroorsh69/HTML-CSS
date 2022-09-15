@@ -67,6 +67,7 @@ echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
     // output data of each row
     while($row = $result->fetch_assoc()) {
       echo 'id: ' . $row['id']. '- project-name: ' . $row['project-name']. '' . $row['desc-prj']. '' .$row['Type-prj'] . '<br>';
+    
     }
   } else {
     echo '0 results';
