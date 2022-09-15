@@ -60,18 +60,17 @@ echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
     die("Connection failed: " . $mysqli->connect_error);
   }
 
-  $sql = "SELECT id, firstname, lastname FROM MyGuests";
-  $result = $conn->query($sql);
+  $sql = "SELECT * FROM project-tb";
+  $result = $mysqli->query($sql);
   
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-      echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+      echo 'id: ' . $row['id']. '- project-name: ' . $row['project-name']. '' . $row['desc-prj']. '' .$row['Type-prj'] . '<br>';
     }
   } else {
-    echo "0 results";
+    echo '0 results';
   }
-  echo 'Protocol version: '.$mysqli->protocol_version;
 
   $mysqli->close();
         
