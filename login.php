@@ -1,24 +1,12 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbName = "Soroor_db";
+require __DIR__ ."/db.php";
+if(isset($_POST['uname']) && isset($_POST['pass']) ){
 
-// Create connection
-$conn = new mysqli($servername, $username, $password);
+    $uname=$_POST['uname'];
+    $password=$_POST['pass'];
 
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-if(isset($_POST['username']) && isset($_POST['password']) ){
-
-    $uname=$_POST['username'];
-    $password=$_POST['password'];
-
-   $sql="SELECT * FROM login_tb where uname='".$uname."' AND pass='".$password."'"; 
-
+   $sql="SELECT * FROM login_tb where username='".$uname."' AND password='".$password."'"; 
+echo $sql;
    $result = $mysqli->query($sql);
 
    if ($result->num_rows > 0) {

@@ -1,3 +1,10 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -42,25 +49,9 @@ echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
         ?>
         <br>
 <?php
-        $db_host = '127.0.0.1';
-        $db_user = 'root';
-  $db_password = 'root';
-  $db_db = 'Soroor_db';
-  $db_port = 8889;
+       require __DIR__ ."/db.php";
 
-  $mysqli = new mysqli(
-    $db_host,
-    $db_user,
-    $db_password,
-    $db_db,
-	$db_port
-  );
-	
-  if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-  }
-
-  $sql = "SELECT * FROM project-tb";
+  $sql = "SELECT * FROM project_tb";
   $result = $mysqli->query($sql);
   
   if ($result->num_rows > 0) {
