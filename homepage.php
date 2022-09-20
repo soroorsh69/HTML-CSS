@@ -1,3 +1,10 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,13 +22,14 @@
      <nav class="navbar justify-content-center">
          <div class="container-fluid">
          <ul class="nav navbar">
-            $menu=array("Home", "about-us", "Services", "Blog", "FAQ", "Contact us");
+            <?php
+            $menu=['Home', 'About-us', 'Blog', 'service', 'FAQ', 'Contact us', 'Ehsan'];
             foreach($menu as $value){
-echo " <li class="nav-item"><a class="nav-link" href="#">$value</a></li>";
+echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
             }
+         ?>   
             
-            
-         </ul>
+</ul>
          </div>
      </nav>
 
@@ -35,18 +43,40 @@ echo " <li class="nav-item"><a class="nav-link" href="#">$value</a></li>";
 <section class="content">
     <div class="container"></div>
     <article>
-        <p>I've been working at Millionairium as an SEO
-            expert and leadership team.
-            Self-motivated with strong interpersonal skills,
-            willing to go above and beyond. My passion is to
-            achieve the best rank for websites, also I love
-            searching, reading, programming, and analyzing.
-            I am a hands-on leader who is able to execute
-            given tasks</p>
+        <?php
+        $content=file_get_contents("resume.txt");
+        echo $content;
+        ?>
+        <br>
+<?php
+       require __DIR__ ."/db.php";
+
+  $sql = "SELECT * FROM project_tb";
+  $result = $mysqli->query($sql);
+  
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      echo 'id: ' . $row['id']. '- project-name: ' . $row['project-name']. '' . $row['desc-prj']. '' .$row['Type-prj'] . '<br>';
+    
+    }
+  } else {
+    echo '0 results';
+  }
+
+  $mysqli->close();
+        
+        
+        ?>
+        
     </article>
 <nav class="sidebar">
     <h2 class="text-center mt-3 mb-3">My Experience</h2>
+
     <ul >
+        <?php
+        $sidebar=['Google Search Console']
+        ?>
         <li > Google Search Console</li>
         <li > Google Analytics</li>
         <li > Semrush</li>
