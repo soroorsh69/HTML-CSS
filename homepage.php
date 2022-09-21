@@ -3,8 +3,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -43,21 +41,26 @@ echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
 <section class="content">
     <div class="container"></div>
     <article>
-        <?php
+        <h2>List of Project</h2>
+        <div class="list-prj" style="margin-left:30px; margin-bottom:30px;">
+     <?php
+       /* 
         $content=file_get_contents("resume.txt");
         echo $content;
         ?>
         <br>
+        */
+        ?>
 <?php
-       require __DIR__ ."/db.php";
+      
 
   $sql = "SELECT * FROM project_tb";
   $result = $mysqli->query($sql);
-  
+  var_dump($_GET);
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-      echo 'id: ' . $row['id']. '- project-name: ' . $row['project-name']. '' . $row['desc-prj']. '' .$row['Type-prj'] . '<br>';
+      echo 'id: ' . $row['id']. '- project-name: ' . $row['project-name']. '<a href="details.php?project_id='.$row['id'].'"> More...</a>' .'<br>';
     
     }
   } else {
@@ -65,10 +68,10 @@ echo '<li class="nav-item"><a class="nav-link" href="#">'.$value.'</a></li>';
   }
 
   $mysqli->close();
-        
+      
         
         ?>
-        
+          </div>
     </article>
 <nav class="sidebar">
     <h2 class="text-center mt-3 mb-3">My Experience</h2>
