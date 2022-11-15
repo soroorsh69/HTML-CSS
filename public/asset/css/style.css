@@ -4,7 +4,7 @@ body{
 
 
 header{
-    background-image: url("/img/background.jpg");
+    background-image: url("/asset/img/background.jpg");
     background-position: center;
     background-size: cover;
     width: 100%;
@@ -72,4 +72,16 @@ footer{
     clear: both;
     margin-top: 20px;
     float: left;
+}
+.list-prj div{
+    margin-left: 30px;
+    margin-top: 30px;
+    line-height: 1.3rem;
+}
+a :hover{
+    color: #000000;
+}
+.prj{
+    margin-top: 50px;
+    margin-left: 50px;
 }
