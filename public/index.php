@@ -29,6 +29,7 @@ try {
 
 }*/ catch (Exception $exception) {
     http_response_code(404);
+echo $exception->getMessage();
     echo 'route not found';
     die;
 }

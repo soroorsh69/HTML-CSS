@@ -16,6 +16,7 @@ class RoutingService
   public function __construct(array $routes, ServiceManager $serviceManager)
   {
     $this->routes= $routes;
+    $this->serviceManager=$serviceManager;
   }
   public function route(string $method, string $path, string $controllername): void
   {
@@ -31,8 +32,9 @@ class RoutingService
     }
 
     $controller = null;
+   // var_dump($this->routes[$method][$path]);die;
     $controller=$this->serviceManager->get($this->routes[$method][$path]);
-    var_dump($controller);die;
+   
     //$controller = (new $this->routes[$method][$path])();
 
 

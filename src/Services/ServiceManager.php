@@ -23,6 +23,7 @@ if ($serviceName ==='config'){
 
         $factories = $this->config['factory'] ?? [];
         $output = $factories[$serviceName] ?? null;
+   
         if ($output === null) {
             throw new ServiceNotFound();
         }

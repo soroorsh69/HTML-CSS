@@ -1,6 +1,7 @@
 <?php
 
 use Php\Project\Controller\DetailsnewController;
+use Php\Project\Controller\DetailsnewControllerFactory;
 use Php\Project\Controller\HomepageController;
 use Php\Project\Controller\HomepageControllerFactory;
 use Php\Project\Services\RoutingService;
@@ -19,6 +20,7 @@ return [
 
     'factory' => [
         HomepageController::class => HomepageControllerFactory::class,
+        DetailsnewController::class=>DetailsnewControllerFactory::class,
         RoutingService::class => RoutingServiceFactory::class,
         
     ],
